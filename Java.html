@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+	<canvas id="gameCanvas" width=800 height=600></canvas>
+<head>
+  	<title>Javascript</title>
+</head>
+<style>
+   #DIVI{
+   float:left;
+   }
+    #DIVII{
+   float:left;
+   }
+   
+   #DIVIII{
+   float:left;
+   }
+   
+    #DIVIV{
+   float:left;
+   }
+   
+    #DIVV{
+   float:right;
+   }
+   
+    #DIVVI{
+   float:right;
+   }
+   
+   svg{
+   float:left;
+   }
+    
+   #I1{
+   float:right;
+    }
+    
+    #I2{
+   float:left;
+    }
+    
+   </style>
+<body style="background-color:red">
+
+<h1 id="I2">Draw</h1>
+<h1 id="I2">---></h1>
+
+<p1 id="I1">Use Up, Down, Left, and Right to Draw</p1>
+<p1 id="I1">Click On and Off Shapes to use them</p1>
+
+
+<div id="DIVI">
+  		<button onClick='up()'>Up</button>
+  	</div>
+  
+  	<div id="DIVII">
+  		<button onClick='down()''>Down</button>
+  	</div>
+  
+  	<div id="DIVIII">
+  		<button onClick="left()">Right</button>
+  	</div>
+  
+  	<div id="DIVIV">
+  		<button onClick="right()">Left</button>
+  	</div>
+
+	<div id="DIVV">
+  		<button onClick='square()'>Square</button>
+  	</div>
+  	
+  	<div id="DIVVI">
+  		<button onClick='circle()'>Circle</button>
+  	</div>
+  
+  	<p><div id="results"></div>
+  
+<script type='text/javascript'>
+
+var canvas;
+var canvasContext;
+var xPos = 0;
+var xSpeed = 0;
+var yPos = 0;
+var ySpeed = 0;
+var squareVis = 0;
+var circleVis = 0;
+var radius = 20;
+
+window.onload = function() {
+	canvas = document.getElementById('gameCanvas');
+	canvasContext = canvas.getContext('2d');
+
+	var framesPerSecond = 30;
+	setInterval(callEverything, 1000/framesPerSecond);
+	canvasContext.fillStyle ='blue';
+	canvasContext.fillRect(0,0,800,800);
+}
+
+function callEverything(){
+
+	moveEverything();
+	drawEverything();
+
+}//end callEverything
+
+function background(){
+canvasContext.fillStyle ='blue';
+	canvasContext.fillRect(0,0,800,800);
+}//end background
+
+function drawEverything(){
+	
+
+	
+	
+	
+	if (squareVis === 1)
+	{
+		canvasContext.fillStyle ='black';
+		canvasContext.fillRect(xPos,yPos,50,50);
+	}//end if
+	
+	if (circleVis === 1)
+	{
+	canvasContext.fillStyle = 'black';
+	canvasContext.beginPath();
+	canvasContext.arc(xPos, yPos, radius, 0, Math.PI*2,true);
+	canvasContext.fill();
+	}//end if
+
+	if(squareVis === 1){
+	circleVis = 0;
+	}//end if
+	
+	if(circleVis === 1){
+	squareVis = 0;
+	}//end if
+	
+	
+	
+	}//end drawEverything
+
+function square(){
+
+	if (squareVis == 0)
+	{
+		squareVis = 1;
+	}//end if
+	else
+	{
+		squareVis = 0;
+	}//end else if
+	console.log('inside square');
+		
+}//end square
+
+function circle(){
+
+	if (circleVis == 0)
+	{
+		circleVis = 1;
+	}//end if
+	else
+	{
+		squareVis = 0;
+	}//end else if
+	console.log('inside circle');
+		
+}// end circle
+
+
+function moveEverything(){
+
+	
+	
+}//end moveEverything
+
+  	
+     function up() {
+     	yPos -= 20;	
+    }//end up
+    
+    function down() {
+      yPos += 20;	
+    }//end down
+    
+    function left() {
+     xPos += 20;	
+    }//end left
+    
+    function right() {
+     	xPos -= 20;
+    }//end right
+     	 
+     	 
+     	   	
+</script>
+</body>
+</html>
+
+
